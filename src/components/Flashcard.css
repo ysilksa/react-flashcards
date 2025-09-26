@@ -1,4 +1,4 @@
-.flashcard {
+.flashcard-background {
     display: flex; 
     flex-direction: column;
     width: 552px;
@@ -6,4 +6,17 @@
     background-color: #FFE4E4;
     align-items: center;
     justify-content: center;
+    z-index: 0;
+}
+
+.flashcard {
+    display: flex; 
+    flex-direction: column;
+    width: 464px;
+    height: 292px;
+    padding: 16px; 
+    background-color: #FFFFFC;
+    align-items: center;
+    justify-content: center;
+    z-index: 8; 
 }

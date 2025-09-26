@@ -3,8 +3,10 @@ import './Flashcard.css';
 
 const Flashcard = (props) => {
     return (
-        <div className="flashcard">
-            <p>{props.text}</p>
+        <div className="flashcard-background">
+            <div className="flashcard">
+                <p>{props.text}</p>
+            </div>
         </div>
     )
 }
