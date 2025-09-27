@@ -14,10 +14,16 @@ const Flashcard = (props) => {
 
     return (
         <div className="flashcard-background" onClick={handleClick}>
-            <div className="flashcard">
-                <p>{side == "front" ? props.front : props.back}</p>
+            <div className={`flashcard ${side === "back" ? "flipped" : ""}`}>
+                <div className="card-face front">
+                    <p>{props.front}</p>
+                </div>
+                <div className="card-face back">
+                    <p>{props.back}</p>
+                </div>
             </div>
         </div>
+
     )
 }
 
