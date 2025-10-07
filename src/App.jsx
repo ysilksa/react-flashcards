@@ -40,7 +40,7 @@ function App() {
   const flashcards = [
     {
       front: "What is the difference between skincare and makeup?",
-      back: "Skincare maintains and improves the health of your skin. Makeup enhances beauty by altering the appearance of the skin and other features. "
+      back: "Skincare maintains and improves the health of your skin. Makeup enhances beauty by altering the appearance of the skin and other features."
     },
     {
       front: "What is the purpose of a moisturizer?", 
