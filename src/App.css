@@ -9,12 +9,35 @@
   align-items: center;
 }
 
-.next-button {
-  width: 440px;
-  height: 80px; 
+.app-page {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  gap: 16px; 
+}
+
+button {
   border-radius: 8px;
   color: #FFFFFC;
   background-color: #C1CCB6;
+}
+
+.nav-buttons {
+  display: flex; 
+  flex-direction: row; 
+  gap: 16px;  
+}
+
+.next-button {
+  width: 200px;
+  height: 80px; 
+}
+
+.answer-section {
+  display: flex; 
+  flex-direction: row; 
+  gap: 16px; 
 }
 
 h1 {

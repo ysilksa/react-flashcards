@@ -4,10 +4,36 @@ import Flashcard from './components/Flashcard';
 
 function App() {
   const [cardNumber, setCardNumber] = useState(1);
+  const [answer, setAnswer] = useState("");
+  const [isCorrect, setIsCorrect] = useState(0); // 0 = no answer, 1 = correct, 2 = incorrect
 
-  function handleClick() {
+  // handles moving the cards back and forth
+  function handleClickNext() {
     if (cardNumber < 10) {
       setCardNumber(cardNumber + 1);
+    }
+    setAnswer("");
+    setIsCorrect(0);
+  }
+
+  function handleClickBack() {
+    if (cardNumber > 1) {
+      setCardNumber(cardNumber - 1);
+    }
+    setAnswer("");
+    setIsCorrect(0);
+  }
+
+  function checkAnswer(event) {
+    // prevent the default
+    event.preventDefault(); 
+
+    // check the answer
+    if (answer.toLowerCase() != flashcards[cardNumber - 1].back.toLowerCase()) {
+      setIsCorrect(2);
+    }
+    else {
+      setIsCorrect(1);
     }
   }
 
@@ -55,7 +81,7 @@ function App() {
   ]
 
   return (
-    <>
+    <div className="app-page">
       {/* Header for the flashcards */}
       <section>
         <h1>Beauty Flashcards</h1>
@@ -66,13 +92,56 @@ function App() {
         back={flashcards[cardNumber - 1].back}
       />
 
+      {/* Input for the flashcard answer */}
+      <section>
+        <form className="answer-section" onSubmit={checkAnswer}>
+          <input 
+            type="text" 
+            placeholder="Type your answer here"
+            value={answer}
+            onChange = {(e) => setAnswer(e.target.value)}
+            style = {{
+              borderColor: isCorrect === 0 ? "transparent" : (isCorrect === 1 ? "green" : "red")
+            }}
+          />
+          <button type="submit">Submit guess</button>
+        </form>
+      </section>
+
       {/* Card number and next button  */}
       <section> 
         <p>{cardNumber} / 10</p>
-        <button className="next-button" onClick={handleClick}>Next →</button>
+        <div className='nav-buttons'>
+          {/* Button to return to the previous card */}
+          <button 
+            className="next-button" 
+            onClick={handleClickBack}
+            disabled={cardNumber === 1}
+            style = {{
+              backgroundColor: cardNumber === 1 ? "#E0E0E0" : "#C1CCB6",
+              cursor: cardNumber === 1 ? "not-allowed" : "pointer"
+            }}
+          >
+            Back
+          </button>
+
+          {/* Button to go to the next card */}
+          <button 
+            className="next-button" 
+            onClick={handleClickNext}
+            disabled={cardNumber === 10}
+            style = {{
+              backgroundColor: cardNumber === 10 ? "#E0E0E0" : "#C1CCB6",
+              cursor: cardNumber === 10 ? "not-allowed" : "pointer"
+            }}
+          >
+            Next
+          </button>
+        </div>
+        
       </section>
 
-    </>    
+    </div>    
   )
 }
 
